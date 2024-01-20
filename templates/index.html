@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <title>Offline Meet</title>
+</head>
+<body>
+    <h1>Offline Audio-Video Meet</h1>
+
+    <div class="home-page">
+        <section id="video-section" >
+            <div class="videos" >
+                <div id="main-video" class="large-video" >
+                    <img id="user-video" src="{{ url_for('user_video') }}" alt="video_feed">
+                </div>
+                <div id="multiple-video">
+                    <!-- <div class="small-video" >
+                        <img src="{{ url_for('static', filename='images/user.png') }}" alt="video_feed">
+                    </div> -->
+                    <!-- <div class="small-video" >
+                        <img src="{{ url_for('static', filename='images/user.png') }}" alt="video_feed">
+                    </div> -->
+                    <!-- <div class="small-video" >
+                        <img src="{{ url_for('static', filename='images/user.png') }}" alt="video_feed">
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="all-buttons" >
+                <div class="button" >
+                    <img id="video-button" src="{{ url_for('static', filename='images/cameraOn.png') }}" alt="video-button" onclick="toggleVideo()">
+                </div>
+                <div class="button" >
+                    <img id="audio-button" src="{{ url_for('static', filename='images/micOff.png') }}" alt="audio-button" onclick="toggleAudio()">
+                </div>
+                <div class="button" >
+                    <img id="speaker-button" src="{{ url_for('static', filename='images/speakerOn.png') }}" alt="speaker-button" onclick="toggleSpeaker()">
+                </div>
+            </div>
+        </section>
+
+        <section id="chat-section">
+            <div id="chat-options">
+                <div class="button filter-button" onclick="showOptions()">
+                    <img src="{{ url_for('static', filename='images/filter-option.png') }}" alt="">
+                </div>
+                <div class="filters display" >
+                    <b>Send</b><br>
+                    <input id="send-msg" name="send" type="radio" value="send-msg" checked="checked" >
+                    <label for="send-msg">Message</label><br>
+                    <input id="send-file" name="send" type="radio" value="send-file">
+                    <label for="send-file">File</label><br><br>
+                    <b>Send to</b><br>
+                    <input id="send-all" name="send-to" type="radio" value="send-all" checked="checked">
+                    <label for="send-all">All</label><br>
+                    <input id="send-usernames" name="send-to" type="radio" value="send-username">
+                    <label for="send-usernames">By Usernames</label><br>
+                    <div class="filter-ok" >
+                        <button onclick="getMsgFilters()" >Set</button>
+                    </div>
+                </div>
+
+                <div class="filter-button select-users display" onclick="getUsernames()" >
+                    <img src="{{ url_for('static', filename='images/select-users.png') }}" alt="">
+                </div>
+                <div id="usernames-list" class="temp display">
+
+                </div>
+
+            </div>
+
+            <div id="chat-history" >
+                <div class="msg-box" >
+                    <p class="from-username" >username</p>
+                    <p class="message" >Demo message box</p>
+                </div>
+                <div class="msg-box user-msg" >
+                    <p class="message" >🤐</p>
+                </div>
+            </div>
+            <div class="chat-input" >
+                <input class="input-box" type="text" name="msg" placeholder="Enter a message..." >
+                
+                <div class="button" onclick="sendMessage()" >
+                    <img src="{{ url_for('static', filename='images/send.png') }}" alt="">
+                </div>
+            </div>
+        </section>
+    </div>
+    
+
+    <script src="{{ url_for('static', filename='toggle.js') }}" ></script>
+</body>
+</html>
